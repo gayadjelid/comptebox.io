@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPTEBOX - Vente d'abonnements</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('images/background.jpg'); /* Ajouter l'image d'arrière-plan */
+            background-size: cover; /* Couvre toute la zone visible */
+            background-position: center; /* Centre l'image */
+            background-repeat: no-repeat; /* Évite que l'image se répète */
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        main {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond semi-transparente */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .subscriptions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .subscription {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+            padding: 15px;
+        }
+        .subscription-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .subscription h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+        .subscription p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .cta-button {
+            display: block;
+            width: calc(100% - 30px);
+            margin: 15px auto;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .cta-button.netflix {
+            background-color: #e50914;
+        }
+        .cta-button.adn {
+            background-color: #0063e1; /* Bleu pour ADN */
+        }
+        .cta-button.crunchyroll {
+            background-color: #ff6f00; /* Orange pour Crunchyroll */
+        }
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .subscription {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .subscription {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>COMPTEBOX - Vente d'abonnements</h1>
+        <nav>
+            <ul>
+                <li><a href="#abonnements">Nos Abonnements</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section id="abonnements" class="subscriptions">
+        <div class="container">
+            <h2>Nos Abonnements</h2>
+            <div class="subscription">
+                <img src="images/netflix.jpg" alt="Netflix" class="subscription-img">
+                <h3>Netflix</h3>
+                <form action="process_baridimob_payment_Netflix.html" method="POST">
+                    <input type="hidden" name="service" value="netflix">
+                    <p>Résolution 720p (HD)</p>
+                    <p>Appareils pris en charge : TV, ordinateur, smartphone, tablette</p>
+                    <p>1 écran</p>
+                    <button type="submit" class="cta-button netflix">Acheter</button>
+                </form>
+            </div>
+            <div class="subscription">
+                <img src="images/adn.jpg" alt="ADN" class="subscription-img">
+                <h3>ADN</h3>
+                <form action="process_baridimob_payment_adn.html" method="POST">
+                    <input type="hidden" name="service" value="adn">
+                    <p>Nombre d'écrans : Illimité</p>
+                    <p>Qualité : HD</p>
+                    <p>Compatibilité : TV, ordinateur, smartphone, tablette</p>  
+                    <button type="submit" class="cta-button adn">Acheter</button>
+                </form>
+            </div>
+            <div class="subscription">
+                <img src="images/crunchyroll.jpg" alt="Crunchyroll" class="subscription-img">
+                <h3>Crunchyroll</h3>
+                <form action="process_baridimob_payment_crunchyrool.html" method="POST">
+                    <input type="hidden" name="service" value="crunchyroll">
+                    <p>Nombre d'écrans : Illimité</p>
+                    <p>Qualité : HD</p>
+                    <p>Compatibilité : TV, ordinateur, smartphone, tablette</p>
+                    <button type="submit" class="cta-button crunchyroll">Acheter</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 COMPTEBOX.</p>
+    </div>
+</footer>
+
+</body>
+</html>

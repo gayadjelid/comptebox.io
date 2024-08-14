@@ -1,0 +1,122 @@
+/* Style global */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+header {
+    background: #444;
+    color: #fff;
+    padding: 1em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6600;
+}
+
+/* Main section */
+main {
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px; /* Limiter la largeur maximale */
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Sections */
+.subscriptions {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.subscription {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: inline-block;
+    width: calc(33% - 40px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.subscription-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.subscription h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.subscription p {
+    margin: 10px 0;
+    color: #666;
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    background: #444;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}

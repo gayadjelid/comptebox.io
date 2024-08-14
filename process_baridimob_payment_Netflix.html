@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPTEBOX - Paiement avec EmailJS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/background.jpg'); /* Ajouter l'image d'arrière-plan */
+            background-size: cover; /* Couvre toute la zone visible */
+            background-position: center; /* Centre l'image */
+            background-repeat: no-repeat; /* Évite que l'image se répète */
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulaire de Paiement BaridiMob</h1>
+        <div class="info">Numéro CCP: 007999990027168661663</div>
+        <form id="paymentForm">
+            <label for="first_name">Prénom :</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Votre prénom" required>
+
+            <label for="last_name">Nom :</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Votre nom" required>
+
+            <label for="email">Adresse e-mail :</label>
+            <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+
+            <label for="subscription">Abonnement :</label>
+            <select id="subscription" name="subscription" required>
+                <option value="" disabled selected>Choisissez un abonnement</option>
+                <option value="Netflix" data-price="500" data-period="1 mois">Netflix 1 mois</option>
+                <option value="Netflix" data-price="1200" data-period="3 mois">Netflix 3 mois</option>
+                <option value="Netflix" data-price="2000" data-period="6 mois">Netflix 6 mois</option>
+            </select>
+
+            <input type="hidden" id="price" name="price">
+            <input type="hidden" id="period" name="period">
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+    <!-- Dernière version stable du SDK EmailJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Initialiser EmailJS avec votre user ID
+        (function() {
+            emailjs.init("m87_r54favuHuHHfO");
+        })();
+
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire classique
+
+            // Récupérer les données du formulaire
+            const subscriptionSelect = document.getElementById('subscription');
+            const selectedOption = subscriptionSelect.options[subscriptionSelect.selectedIndex];
+
+            // Mettre à jour les champs cachés avec les données sélectionnées
+            document.getElementById('price').value = selectedOption.getAttribute('data-price');
+            document.getElementById('period').value = selectedOption.getAttribute('data-period');
+
+            // Envoyer le formulaire via EmailJS
+            emailjs.sendForm('service_87nzp6y', 'template_xlet0tl', this)
+                .then(() => {
+                    alert('Formulaire envoyé avec succès !');
+                    document.getElementById('paymentForm').reset(); // Réinitialiser le formulaire
+                }, (error) => {
+                    alert('Erreur lors de l\'envoi du formulaire : ' + JSON.stringify(error));
+                });
+        });
+    </script>
+
+</body>
+</html>
